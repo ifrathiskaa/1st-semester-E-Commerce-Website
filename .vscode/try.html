@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SLIATE-Admin login</title>
+    <link href="assets/img/SLIATE 2.jpg" rel="icon">
+   <link href="assets/img/SLIATE 2.jpg" rel="Sliate-icon">
+    <style>
+
+        #header .logo {
+        font-size: 40px;
+        margin: 0;
+        padding: 0;
+        line-height: 1;
+        font-weight: 1500;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        font-family: "Georgia, 'Times New Roman', Times, serif";
+        }
+
+         #header .logo img {
+             max-height: 55px;
+        }
+        body {
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            background-color: #051857;
+            text-align: center;
+        }
+
+        .login-container {
+            width: 300px;
+            margin: 100px ;
+            margin-top: 150px;
+            margin-left:500px;
+            background: #fff;
+            padding: 60px 40px 60px 30px;
+            border-radius: 20px;
+            box-shadow: 0 0 10px rgba(117, 117, 117, 0.1);
+        }
+
+        .login-container input {
+            width: 90%;
+            padding: 8px;
+            margin: 10px;
+            border: 2px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .login-container button {
+            width: 100%;
+            background-color: #0056b3;
+            color: #fff;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    
+        .login-container button:hover {
+            background-color: #0d2844;
+        }
+    </style>
+</head>
+<body>
+    <header id="header" class="fixed-top">
+        <div class="container d-flex align-items-center">
+    <div class="login-container">
+        <h2 class="logo me-auto"><img src="assets/img/logo.jpg"
+            class="img" alt="">SLIATE</h2>
+            <hr>
+            <div id="messages" style="margin-bottom: 10px;">
+                <span id="invalid" style="color: red; display: none;">Email or password not match</span>
+                <span id="valid" style="color: green; display: none;">Email and password matching perfectly</span>
+                <span id="empty" style="color: red; display: none;">Email field cannot be empty </span>
+            </div>
+            <input type="text" id="InputEmail1" placeholder="Username" name="username" required><br>
+            <input type="password" id="InputPassword1" placeholder="Password" name="password" required><br>
+           
+           <br> <button type="submit" onclick="Regx()">Login</button>
+        </form>
+
+        <script>
+            function Regx(){
+              var emailInput = document.getElementById('InputEmail1').value;
+              var passwordInput = document.getElementById('InputPassword1').value;
+              var emailPattern = /^([A-Za-z0-9]{5,10})@([A-Za-z0-9]{3,8}).([a-z]{2,3})$/;
+              var passwordPattern = /^([A-Za-z0-9]{6,15})$/;
+        
+              if (emailInput.trim() === "") {
+                    document.getElementById('empty').style.display = "inline";
+                    return; // Stop further processing
+             } 
+             else {
+                 document.getElementById('empty').style.display = "none";
+            }
+  
+            if (emailInput.match(emailPattern) && passwordInput.match(passwordPattern)) {
+                document.getElementById('valid').style.display = "inline";
+                document.getElementById('invalid').style.display = "none";
+            } 
+            else {
+                document.getElementById('invalid').style.display = "inline";
+            }
+              
+          }
+          
+          </script>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>sign up to login</title>
+    <style>
+        body {
+            font-family:Georgia, 'Times New Roman', Times, serif;
+            background-color:#051857;
+        }
+        .container {
+            max-width: 300px;
+            margin-top: 50px;
+            margin-left:500px ;
+            padding: 35px 30px 40px 30px;
+            background-color: #dedcdc;
+            border-radius: 20px;
+            box-shadow: 0 0 10px rgba(117, 117, 117, 0.1);
+            
+        }
+        h2 {
+            text-align: center;
+        }
+        input[type="text"],
+        input[type="password"],
+        input[type="submit"] {
+            width: 90%;
+            padding: 8px;
+            margin: 10px;
+            border: 2px solid #ccc;
+            border-radius: 5px;
+        }
+        .container button {
+            width: 99%;
+            background-color: #0056b3;
+            color: #fff;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    
+        .container button:hover {
+            background-color: #0d2844;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Sign Up</h2>
+        <div id="messages" style="margin-bottom: 10px; text-align: center;">
+            <span id="NameError" style="color: red; display: none;">Name should be 5 to 20 charcters </span>
+            <span id="invalid" style="color: red; display: none;">Email or password not match </span>
+            <span id="valid" style="color: green; display: none;">Email and password matching perfectly </span>
+            <span id="empty" style="color: red; display: none;">Email field cannot be empty </span>
+            <span id="passwordError" style="color: red; display: none;"> Password should be 6-15 charcters</span>
+            <span id="password1Error" style="color: red; display: none;">Must match with password </span>  
+            <span id="passwordcorrect" style="color: rgb(10, 115, 61); display: none;">Submited </span> 
+        
+        </div>
+        <form>
+            <label for="name">Name</label>
+            <input type="text" id="Inputname" name="name" required>
+
+            <label for="email">Email</label>
+            <input type="text" id="InputEmail3" name="email" required>
+
+            <label for="password">Password</label>
+            <input type="password" id="InputPassword3" name="password" required>
+
+            <label for="confirm_password">Confirmed password</label>
+            <input type="password" id="confirm_password" name="password" required>
+
+            <button type="submit" onclick="Regx()">Login</button>
+            <p>Already have an account? <a href="login.html">Login here</a></p>
+        </form>
+        <script>
+            function Regx()
+            {
+        //name
+            var nameInput = document.getElementById('Inputname').value;
+            var namepattern2=/([A-Za-z ]{5,20})$/;
+              if (!namepattern2.test(nameInput)) {
+                     document.getElementById("NameError").style.display = "inline";
+                     document.getElementById('empty').style.display = "none";
+                    return;
+                } else {
+                document.getElementById("NameError").style.display = "none";
+                }
+        //email
+            var emailInput2 = document.getElementById('InputEmail3').value;
+            var emailPattern2 = /([A-Za-z0-9]{5,10})@([A-Za-z0-9]{3,8}).([a-z]{2,3})$/;
+              if (emailInput2.trim() === "") {
+                  document.getElementById('empty').style.display = "inline";
+                  
+                  return; // Stop further processing
+              } else {
+                  document.getElementById('empty').style.display = "none";
+              }
+        //password
+        var passwordInput2 = document.getElementById('InputPassword3').value;
+        var passwordPattern2 =/^([A-Za-z0-9]{6,15})$/;
+              if (!passwordPattern2.test(passwordInput2)) {
+                document.getElementById("passwordError").style.display = "inline";
+                  return;
+                } 
+              else {
+                document.getElementById("passwordError").style.display = "none";
+                }
+             
+        //confirmed password
+        var confirmPasswordInput = document.getElementById('confirm_password').value;
+  
+    if (passwordInput2 !== confirmPasswordInput) {
+        document.getElementById("password1Error").style.display = "inline";
+        document.getElementById("passwordcorrect").style.display = "none";
+    } else {
+        document.getElementById("password1Error").style.display = "none";
+        document.getElementById("passwordcorrect").style.display = "inline";
+    }
+        }
+            </script>
+    </div>
+</body>
+</html>
